@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Untuk Anisa</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #c9d6ff, #e2e2e2);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #333;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-top: 2em;
+    }
+
+    p {
+      font-size: 1.1em;
+      margin: 0.5em 20px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
+    }
+
+    .heart {
+      font-size: 2.5em;
+      color: #ff4d4d;
+      margin: 20px 0;
+      animation: beat 1s infinite alternate;
+    }
+
+    @keyframes beat {
+      to { transform: scale(1.2); }
+    }
+
+    .button-container {
+      margin-top: 30px;
+      position: relative;
+      height: 200px;
+    }
+
+    .button {
+      padding: 10px 20px;
+      font-size: 1em;
+      border-radius: 10px;
+      border: 2px solid;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: absolute;
+    }
+
+    .accept {
+      background-color: white;
+      color: #4caf50;
+      border-color: #4caf50;
+      left: 50%;
+      top: 40%;
+      transform: translate(-50%, -50%);
+    }
+
+    .accept:hover {
+      background-color: #4caf50;
+      color: white;
+    }
+
+    .reject {
+      background-color: white;
+      color: #f44336;
+      border-color: #f44336;
+    }
+
+    .reject:hover {
+      background-color: #f44336;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <h1>Hai, Anisa Febrinah</h1>
+  <div class="heart">❤️</div>
+  <p>Kita memang terpisah jarak, dan sejauh ini kita hanya bertemu lewat layar.</p>
+  <p>Tapi entah kenapa, setiap kali kita video call, rasanya cukup untuk membuat hari-hariku jadi lebih ringan.</p>
+  <p>Aku mulai sadar bahwa perasaan ini tumbuh. Bukan karena jarak yang membuat rindu, tapi karena kamu memang seseorang yang spesial.</p>
+  <p>Jadi... aku ingin jujur. Aku menyukaimu. Dan aku ingin tahu, apakah kamu merasakan hal yang sama?</p>
+
+  <div class="button-container">
+    <button class="button accept" onclick="window.open('https://wa.me/6285642044932?text=Hai,%20aku%20juga%20punya%20perasaan%20yang%20sama%20:)','_blank')">
+      Ya aku mau!!!
+    </button>
+    <button class="button reject" id="rejectBtn">
+      Maaf, aku belum bisa
+    </button>
+  </div>
+
+  <script>
+    const rejectBtn = document.getElementById("rejectBtn");
+
+    document.addEventListener("mousemove", (e) => {
+      const rect = rejectBtn.getBoundingClientRect();
+      const distance = Math.hypot(
+        e.clientX - (rect.left + rect.width / 2),
+        e.clientY - (rect.top + rect.height / 2)
+      );
+
+      if (distance < 100) {
+        const container = document.querySelector('.button-container');
+        const maxX = container.offsetWidth - rejectBtn.offsetWidth;
+        const maxY = container.offsetHeight - rejectBtn.offsetHeight;
+        const newX = Math.floor(Math.random() * maxX);
+        const newY = Math.floor(Math.random() * maxY);
+        rejectBtn.style.left = newX + "px";
+        rejectBtn.style.top = newY + "px";
+      }
+    });
+  </script>
+</body>
+</html>
